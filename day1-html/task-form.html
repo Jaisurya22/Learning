@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+</head>
+<body>
+
+    <main>
+
+        <section>
+
+            <h1>Create New Task</h1>
+
+            <form>
+
+                <div>
+                    <label for="title">Task Title</label>
+                    <input
+                        type="text"
+                        id="title"
+                    >
+                </div>
+
+                <div>
+                    <label for="description">Description</label>
+                    <textarea
+                        id="description"
+                        rows="5">
+                    </textarea>
+                </div>
+
+                <div>
+                    <label for="assignee">Assignee name</label>
+                    <input
+                        type="text"
+                        id="assignee"
+                    >
+                </div>    
+                
+                
+                <div>
+                    <label for="status">Status</label>
+                    <select id="status" name="status">
+                        <option value="todo">todo</option>
+                        <option value="in_progress">in progress</option>
+                        <option value="review">review</option>
+                        <option value="done">done</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="attachment">Attachment</label>
+                    <input type="file" id="attachment" name="attachment">
+                </div>
+                <div>
+                    <label for="priority">Priority</label>
+
+                    <select id="priority">
+
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                        <option>Critical</option>
+
+                    </select>
+                </div>
+
+                <div>
+                    <label for="deadline">Deadline</label>
+
+                    <input
+                        type="date"
+                        id="deadline"
+                    >
+                </div>
+
+                <button type="submit">
+                    Create Task
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

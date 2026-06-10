@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30-Day MEVN Stack Roadmap</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.7; }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+    h1 { font-size: 2.5rem; color: #38bdf8; text-align: center; margin: 30px 0 10px; }
+    h2 { font-size: 1.8rem; color: #38bdf8; margin: 40px 0 15px; padding-bottom: 8px; border-bottom: 2px solid #1e293b; }
+    h3 { font-size: 1.3rem; color: #f472b6; margin: 25px 0 10px; }
+    h4 { color: #a78bfa; margin: 15px 0 5px; }
+    p, li { margin-bottom: 10px; }
+    ul, ol { padding-left: 24px; margin-bottom: 15px; }
+    .card { background: #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 24px; border-left: 4px solid #38bdf8; }
+    .card.week { border-left-color: #f472b6; }
+    code { background: #0f172a; padding: 2px 8px; border-radius: 4px; font-family: 'Cascadia Code', 'Fira Code', monospace; font-size: 0.9em; color: #fbbf24; }
+    pre { background: #0b1120; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 12px 0; border: 1px solid #1e293b; }
+    pre code { background: transparent; padding: 0; color: inherit; }
+    .comment { color: #6b7280; font-style: italic; }
+    .keyword { color: #f472b6; }
+    .string { color: #34d399; }
+    .function { color: #60a5fa; }
+    .variable { color: #fbbf24; }
+    .number { color: #a78bfa; }
+    .syntax { color: #e2e8f0; }
+    .tag { color: #f472b6; }
+    .attr { color: #38bdf8; }
+    .value { color: #34d399; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-right: 6px; }
+    .badge.js { background: #fbbf24; color: #0f172a; }
+    .badge.node { background: #34d399; color: #0f172a; }
+    .badge.vue { background: #38bdf8; color: #0f172a; }
+    .badge.mongo { background: #a78bfa; color: #0f172a; }
+    .badge.test { background: #f472b6; color: #0f172a; }
+    .badge.deploy { background: #f97316; color: #0f172a; }
+    .outcome { background: #0f172a; border-radius: 8px; padding: 12px 16px; margin: 10px 0; border: 1px solid #334155; }
+    .outcome::before { content: ">> You'll be able to: "; color: #34d399; font-weight: 600; }
+    .tip { background: #1e293b; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 8px; margin: 10px 0; font-size: 0.9rem; }
+    .tip::before { content: "TIP: "; color: #fbbf24; font-weight: 600; }
+    .warning { background: #1e293b; border-left: 4px solid #f97316; padding: 12px 16px; border-radius: 8px; margin: 10px 0; font-size: 0.9rem; }
+    .warning::before { content: "COMMON MISTAKE: "; color: #f97316; font-weight: 600; }
+    .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 15px 0; }
+    .concept-item { background: #0f172a; padding: 10px 14px; border-radius: 8px; border: 1px solid #334155; font-size: 0.85rem; }
+    .concept-item .num { color: #6b7280; font-size: 0.7rem; }
+    nav { position: sticky; top: 0; background: #0f172a; padding: 10px 0; z-index: 100; border-bottom: 1px solid #1e293b; margin-bottom: 20px; }
+    nav a { color: #94a3b8; text-decoration: none; margin: 0 8px; font-size: 0.85rem; }
+    nav a:hover { color: #38bdf8; }
+    .week-nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+    .file-tree { font-family: monospace; background: #0b1120; padding: 16px; border-radius: 8px; margin: 10px 0; line-height: 2; }
+    .project-screenshot { background: #0b1120; border: 2px dashed #334155; border-radius: 12px; padding: 40px; text-align: center; margin: 20px 0; color: #6b7280; }
+    .step-num { display: inline-block; background: #38bdf8; color: #0f172a; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 700; font-size: 0.85rem; margin-right: 8px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e293b; }
+    th { color: #38bdf8; font-weight: 600; }
+    tr:hover td { background: #1e293b; }
+    .footer { text-align: center; padding: 30px; color: #475569; font-size: 0.85rem; border-top: 1px solid #1e293b; margin-top: 40px; }
+    @media (max-width: 600px) { .container { padding: 12px; } h1 { font-size: 1.6rem; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <strong style="color:#38bdf8;">MEVN 30-Day Bootcamp</strong>
+      <div class="week-nav">
+        <a href="#week1">W1</a><a href="#week2">W2</a><a href="#week3">W3</a><a href="#week4">W4</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<h1>🚀 30-Day MEVN Stack Bootcamp</h1>
+<p style="text-align:center;color:#94a3b8;max-width:640px;margin:0 auto 30px;">Build a complete Bug Tracker app (like lightweight Jira) from absolute scratch. One project. Every concept. Zero gaps.</p>
+
+<!-- Project Overview -->
+<div class="card">
+  <h3>What You'll Build: Bug Tracker</h3>
+  <div class="project-screenshot">
+    <div style="font-size:3rem;margin-bottom:10px;">🐛</div>
+    <strong style="font-size:1.2rem;">Bug Tracker</strong>
+    <p style="color:#94a3b8;margin-top:8px;">[Your finished project after 30 days]</p>
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
+      <span>✅ Auth (JWT + refresh tokens)</span>
+      <span>✅ Project CRUD</span>
+      <span>✅ Bug CRUD + comments</span>
+      <span>✅ Image upload</span>
+      <span>✅ WebSockets (real-time)</span>
+      <span>✅ Redis caching</span>
+      <span>✅ Background jobs</span>
+      <span>✅ Admin panel</span>
+      <span>✅ Tests + CI/CD</span>
+      <span>✅ Docker deploy</span>
+    </div>
+  </div>
+
+  <h4>Final Project Structure</h4>
+  <div class="file-tree">
+bug-tracker/<br>
+├── <strong style="color:#38bdf8;">backend/</strong><br>
+│   ├── <span style="color:#6b7280;">src/</span><br>
+│   │   ├── models/        User, Project, Bug, Comment, AuditLog<br>
+│   │   ├── controllers/   auth, projects, bugs, comments, upload, admin<br>
+│   │   ├── routes/        auth, projects, bugs, comments, upload, admin<br>
+│   │   ├── middleware/     auth, rbac, upload, errorHandler, validate<br>
+│   │   ├── utils/         AppError, logger, email, helpers<br>
+│   │   ├── config/        db, redis, env<br>
+│   │   ├── jobs/          emailQueue, imageQueue<br>
+│   │   ├── socket/        index.js<br>
+│   │   └── server.js<br>
+│   ├── tests/             auth.test.js, bugs.test.js, comments.test.js<br>
+│   ├── uploads/           (images)<br>
+│   ├── Dockerfile<br>
+│   ├── .env<br>
+│   └── package.json<br>
+├── <strong style="color:#34d399;">frontend/</strong><br>
+│   ├── src/<br>
+│   │   ├── views/         Login, Register, Dashboard, ProjectDetail, BugDetail, Admin<br>
+│   │   ├── components/    Navbar, Sidebar, BugCard, BugForm, CommentList, Charts<br>
+│   │   ├── stores/        authStore, projectStore, bugStore<br>
+│   │   ├── router/        index.js<br>
+│   │   ├── utils/         api.js, helpers<br>
+│   │   ├── App.vue<br>
+│   │   └── main.js<br>
+│   ├── index.html<br>
+│   └── package.json<br>
+├── docker-compose.yml<br>
+└── README.md
+  </div>
+</div>
+
+<!-- ==================== PHASE 1 ==================== -->
+<h2 id="week1">Phase 1: JavaScript + Node Foundation</h2>
+<p style="color:#94a3b8;">Days 1-5 — You already know Java logic; we map it to JavaScript and get Node.js running.</p>
+
+<!-- Day 1 -->
+<div class="card">
+  <h3><span class="badge js">Day 1</span> JavaScript Basics — Variables, Types, Functions</h3>
+  <div class="outcome">Write a JS program with variables, functions, and basic math. Run it from terminal.</div>
+
+  <h4>Step 1: Install Tools</h4>
+  <ol>
+    <li><strong>Download VS Code</strong> from <code>https://code.visualstudio.com</code> — install it (all defaults)</li>
+    <li><strong>Download Node.js (LTS v20+)</strong> from <code>https://nodejs.org</code> — install it (all defaults)</li>
+    <li><strong>Open VS Code</strong>. Click <code>File → Open Folder</code>. Create a new folder called <code>bug-tracker</code> anywhere (Desktop is fine)</li>
+    <li>Inside VS Code, click <code>Terminal → New Terminal</code> (or Ctrl + \`)</li>
+  </ol>
+
+  <div class="tip">In the terminal, type <code>node --version</code> and press Enter. If you see a number like <code>v20.x.x</code>, you're good.</div>
+
+  <h4>Step 2: Create Your First File</h4>
+  <p>In VS Code's file explorer (left sidebar), right-click empty space → <strong>New File</strong> → name it <code>day1.js</code></p>
+
+  <h4>Step 3: Write This Code</h4>
+  <p>Type exactly this into <code>day1.js</code>:</p>
+  <pre><code><span class="comment">// ============================================</span>
+<span class="comment">// DAY 1: Variables, Types, Functions</span>
+<span class="comment">// In Java you wrote:  int age = 25;</span>
+<span class="comment">// In JavaScript:      let age = 25;</span>
+<span class="comment">// ============================================</span>
+
+<span class="comment">// --- VARIABLES ---</span>
+<span class="keyword">let</span> name = <span class="string">"Alex"</span>;        <span class="comment">// String (like Java String)</span>
+<span class="keyword">const</span> age = <span class="number">25</span>;            <span class="comment">// Number (like Java int, but also works for decimals)</span>
+<span class="keyword">let</span> isLearning = <span class="keyword">true</span>;   <span class="comment">// Boolean (like Java boolean)</span>
+
+<span class="comment">// Print to console — Java uses System.out.println()</span>
+<span class="function">console</span>.<span class="function">log</span>(name);
+<span class="function">console</span>.<span class="function">log</span>(<span class="string">"Age: "</span> + age);
+
+<span class="comment">// --- TYPES (JavaScript is flexible) ---</span>
+<span class="keyword">let</span> price = <span class="number">19.99</span>;         <span class="comment">// number — no int vs double in JS</span>
+<span class="keyword">let</span> nothing = <span class="keyword">null</span>;        <span class="comment">// null — empty on purpose</span>
+<span class="keyword">let</span> notDefined;              <span class="comment">// undefined — declared but no value</span>
+
+<span class="function">console</span>.<span class="function">log</span>(<span class="keyword">typeof</span> price);      <span class="comment">// prints: "number"</span>
+<span class="function">console</span>.<span class="function">log</span>(<span class="keyword">typeof</span> notDefined); <span class="comment">// prints: "undefined"</span>
+
+<span class="comment">// --- FUNCTIONS (Java: public void sayHello(String name)) ---</span>
+<span class="keyword">function</span> <span class="function">sayHello</span>(name) {
+    <span class="keyword">return</span> <span class="string">"Hello "</span> + name + <span class="string">"!"</span>;
+}
+
+<span class="keyword">let</span> message = <span class="function">sayHello</span>(<span class="string">"Alex"</span>);
+<span class="function">console</span>.<span class="function">log</span>(message);
+
+<span class="comment">// --- ARROW FUNCTION (shorter way — JS-only) ---</span>
+<span class="keyword">const</span> sayHi = (name) => {
+    <span class="keyword">return</span> <span class="string">"Hi "</span> + name + <span class="string">"!"</span>;
+};
+<span class="function">console</span>.<span class="function">log</span>(<span class="function">sayHi</span>(<span class="string">"Alex"</span>));
+
+<span class="comment">// One-line arrow (even shorter — no curly braces needed)</span>
+<span class="keyword">const</span> double = (x) => x * <span class="number">2</span>;
+<span class="function">console</span>.<span class="function">log</span>(<span class="function">double</span>(<span class="number">5</span>)); <span class="comment">// prints: 10</span></code></pre>
+
+  <h4>Step 4: Run It</h4>
+  <p>In the terminal, type:</p>
+  <pre><code>node day1.js</code></pre>
+  <p>You should see your name, age, and function outputs printed.</p>
+
+  <div class="warning">If you see <code>"node is not recognized"</code>, you didn't install Node.js correctly. Restart VS Code after installing Node.js, or restart your computer.</div>
+
+  <h4>Your Task (Do this yourself)</h4>
+  <p>Modify the file to add:</p>
+  <ol>
+    <li>A variable for your <code>favoriteLanguage</code> (string)</li>
+    <li>A function <code>introduce(name, age, language)</code> that returns <code>"Hi, I'm [name], I'm [age], I love [language]"</code></li>
+    <li>A function <code>isAdult(age)</code> that returns true if age >= 18</li>
+    <li>Print everything with console.log()</li>
+  </ol>
+
+  <p><strong>If stuck:</strong> Copy the functions above and just change the names. Remember: <code>+</code> joins strings together.</p>
+
+  <div class="tip"><strong>Java → JS mapping:</strong> Java: <code>int x = 5; System.out.println(x);</code> → JS: <code>let x = 5; console.log(x);</code></div>
+</div>
+
+<!-- Day 2 -->
+<div class="card">
+  <h3><span class="badge js">Day 2</span> JavaScript — Objects, Arrays, Loops, Conditions</h3>
+  <div class="outcome">Create arrays and objects, loop through data, make decisions with if/else.</div>
+
+  <p>Create <code>day2.js</code> and type this:</p>
+  <pre><code><span class="comment">// ============================================</span>
+<span class="comment">// DAY 2: Arrays, Objects, Loops, Conditions</span>
+<span class="comment">// ============================================</span>
+
+<span class="comment">// --- ARRAYS (like Java arrays, but flexible) ---</span>
+<span class="keyword">let</span> fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>];
+<span class="function">console</span>.<span class="function">log</span>(fruits[<span class="number">0</span>]); <span class="comment">// "apple" — same as Java</span>
+
+fruits.<span class="function">push</span>(<span class="string">"date"</span>);     <span class="comment">// add to end</span>
+fruits.<span class="function">pop</span>();            <span class="comment">// remove from end</span>
+<span class="function">console</span>.<span class="function">log</span>(fruits.length); <span class="comment">// 3 — like Java: fruits.length</span>
+
+<span class="comment">// --- OBJECTS (like Java classes, but no class needed) ---</span>
+<span class="keyword">let</span> user = {
+    name: <span class="string">"Alex"</span>,
+    age: <span class="number">25</span>,
+    role: <span class="string">"developer"</span>
+};
+
+<span class="function">console</span>.<span class="function">log</span>(user.name);     <span class="comment">// "Alex" — dot notation</span>
+<span class="function">console</span>.<span class="function">log</span>(user[<span class="string">"role"</span>]); <span class="comment">// "developer" — bracket notation</span>
+
+<span class="comment">// Add new properties anytime (can't do that in Java!)</span>
+user.email = <span class="string">"alex@email.com"</span>;
+<span class="function">console</span>.<span class="function">log</span>(user);
+
+<span class="comment">// --- ARRAY OF OBJECTS (like a database table) ---</span>
+<span class="keyword">let</span> bugs = [
+    { title: <span class="string">"Login broken"</span>, priority: <span class="string">"high"</span>, status: <span class="string">"open"</span> },
+    { title: <span class="string">"Button misaligned"</span>, priority: <span class="string">"low"</span>, status: <span class="string">"resolved"</span> },
+    { title: <span class="string">"Data not saving"</span>, priority: <span class="string">"critical"</span>, status: <span class="string">"open"</span> }
+];
+
+<span class="function">console</span>.<span class="function">log</span>(bugs[<span class="number">0</span>].title); <span class="comment">// "Login broken"</span>
+
+<span class="comment">// --- LOOPS (same as Java for loop) ---</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; bugs.length; i++) {
+    <span class="function">console</span>.<span class="function">log</span>(bugs[i].title);
+}
+
+<span class="comment">// forEach (shorter — JS-specific)</span>
+bugs.<span class="function">forEach</span>((bug) => {
+    <span class="function">console</span>.<span class="function">log</span>(bug.title + <span class="string">" - "</span> + bug.priority);
+});
+
+<span class="comment">// map (creates new array from old)</span>
+<span class="keyword">let</span> titles = bugs.<span class="function">map</span>((bug) => bug.title);
+<span class="function">console</span>.<span class="function">log</span>(titles); <span class="comment">// ["Login broken", "Button misaligned", "Data not saving"]</span>
+
+<span class="comment">// filter (keeps items that match)</span>
+<span class="keyword">let</span> openBugs = bugs.<span class="function">filter</span>((bug) => bug.status === <span class="string">"open"</span>);
+<span class="function">console</span>.<span class="function">log</span>(openBugs);
+
+<span class="comment">// --- CONDITIONS (same as Java) ---</span>
+<span class="keyword">let</span> score = <span class="number">85</span>;
+<span class="keyword">if</span> (score >= <span class="number">90</span>) {
+    <span class="function">console</span>.<span class="function">log</span>(<span class="string">"A"</span>);
+} <span class="keyword">else if</span> (score >= <span class="number">80</span>) {
+    <span class="function">console</span>.<span class="function">log</span>(<span class="string">"B"</span>);
+} <span class="keyword">else</span> {
+    <span class="function">console</span>.<span class="function">log</span>(<span class="string">"C"</span>);
+}
+
+<span class="comment">// --- COMPARISON: == vs === (IMPORTANT!) ---</span>
+<span class="function">console</span>.<span class="function">log</span>(<span class="number">5</span> == <span class="string">"5"</span>);   <span class="comment">// true  (== converts types — BAD!)</span>
+<span class="function">console</span>.<span class="function">log</span>(<span class="number">5</span> === <span class="string">"5"</span>);  <span class="comment">// false (=== checks type + value — ALWAYS use this)</span></code></pre>
+
+  <h4>Your Task</h4>
+  <ol>
+    <li>Create an array of 3 bug objects (each with title, priority, status)</li>
+    <li>Use <code>filter()</code> to get only high/critical priority bugs</li>
+    <li>Use <code>map()</code> to create an array of just the titles</li>
+    <li>Loop through and print each bug with: <code>"Bug: [title] — Priority: [priority]"</code></li>
+  </ol>
+  <p>Run with: <code>node day2.js</code></p>
+</div>
+
+<!-- Day 3 -->
+<div class="card">
+  <h3><span class="badge node">Day 3</span> Node.js + First Server</h3>
+  <div class="outcome">Create a Node.js server that responds to browser requests.</div>
+
+  <h4>Step 1: Create package.json</h4>
+  <p>In terminal (make sure you're in <code>bug-tracker</code> folder):</p>
+  <pre><code>npm init -y</code></pre>
+  <p>This creates a <code>package.json</code> file — it's like a manifest for your project.</p>
+
+  <h4>Step 2: Install Express</h4>
+  <pre><code>npm install express</code></pre>
+  <p>This downloads Express into <code>node_modules/</code> (similar to Maven/Gradle downloading JARs)</p>
+
+  <h4>Step 3: Create a server</h4>
+  <p>Create <code>server.js</code>:</p>
+  <pre><code><span class="comment">// ============================================</span>
+<span class="comment">// DAY 3: First Express Server</span>
+<span class="comment">// ============================================</span>
+
+<span class="keyword">const</span> express = <span class="function">require</span>(<span class="string">"express"</span>); <span class="comment">// load express (like Java import)</span>
+<span class="keyword">const</span> app = <span class="function">express</span>();                 <span class="comment">// create app</span>
+<span class="keyword">const</span> PORT = <span class="number">5000</span>;                      <span class="comment">// port number (like a door)</span>
+
+<span class="comment">// Route: when someone visits http://localhost:5000/</span>
+app.<span class="function">get</span>(<span class="string">"/"</span>, (req, res) => {
+    res.<span class="function">send</span>(<span class="string">"Hello from the server!"</span>);
+});
+
+<span class="comment">// Start the server</span>
+app.<span class="function">listen</span>(PORT, () => {
+    <span class="function">console</span>.<span class="function">log</span>(<span class="string">"Server running on http://localhost:"</span> + PORT);
+});</code></pre>
+
+  <h4>Step 4: Run it</h4>
+  <pre><code>node server.js</code></pre>
+  <p>Open your browser and go to <code>http://localhost:5000/</code> — you should see "Hello from the server!"</p>
+  <p>To stop the server: press <code>Ctrl + C</code> in terminal</p>
+
+  <div class="tip"><strong>How it works:</strong> Express listens on port 5000. When a browser visits, Express runs your function and sends a response. That's the foundation of every web API.</div>
+</div>
+
+<!-- Day 4 -->
+<div class="card">
+  <h3><span class="badge node">Day 4</span> Express Routes + JSON APIs</h3>
+  <div class="outcome">Create a REST API that returns JSON data — the backbone of every backend.</div>
+
+  <pre><code><span class="keyword">const</span> express = <span class="function">require</span>(<span class="string">"express"</span>);
+<span class="keyword">const</span> app = <span class="function">express</span>();
+
+app.<span class="function">use</span>(express.<span class="function">json</span>()); <span class="comment">// tells Express to understand JSON body data</span>
+
+<span class="comment">// In-memory "database" (we'll replace with MongoDB later)</span>
+<span class="keyword">let</span> bugs = [
+    { id: <span class="number">1</span>, title: <span class="string">"Login broken"</span>, status: <span class="string">"open"</span> },
+    { id: <span class="number">2</span>, title: <span class="string">"UI misaligned"</span>, status: <span class="string">"resolved"</span> }
+];
+<span class="keyword">let</span> nextId = <span class="number">3</span>;
+
+<span class="comment">// GET /api/bugs — list all bugs</span>
+app.<span class="function">get</span>(<span class="string">"/api/bugs"</span>, (req, res) => {
+    res.<span class="function">json</span>(bugs); <span class="comment">// sends JSON (browser shows it as data)</span>
+});
+
+<span class="comment">// GET /api/bugs/:id — get one bug by ID</span>
+app.<span class="function">get</span>(<span class="string">"/api/bugs/:id"</span>, (req, res) => {
+    <span class="keyword">const</span> bug = bugs.<span class="function">find</span>((b) => b.id === <span class="function">Number</span>(req.params.id));
+    <span class="keyword">if</span> (!bug) {
+        <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">404</span>).<span class="function">json</span>({ error: <span class="string">"Bug not found"</span> });
+    }
+    res.<span class="function">json</span>(bug);
+});
+
+<span class="comment">// POST /api/bugs — create a new bug</span>
+app.<span class="function">post</span>(<span class="string">"/api/bugs"</span>, (req, res) => {
+    <span class="keyword">const</span> bug = {
+        id: nextId++,
+        title: req.body.title,     <span class="comment">// from JSON sent by client</span>
+        status: req.body.status || <span class="string">"open"</span>
+    };
+    bugs.<span class="function">push</span>(bug);
+    res.<span class="function">status</span>(<span class="number">201</span>).<span class="function">json</span>(bug); <span class="comment">// 201 = Created</span>
+});
+
+<span class="comment">// PUT /api/bugs/:id — update a bug</span>
+app.<span class="function">put</span>(<span class="string">"/api/bugs/:id"</span>, (req, res) => {
+    <span class="keyword">const</span> bug = bugs.<span class="function">find</span>((b) => b.id === <span class="function">Number</span>(req.params.id));
+    <span class="keyword">if</span> (!bug) {
+        <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">404</span>).<span class="function">json</span>({ error: <span class="string">"Bug not found"</span> });
+    }
+    bug.title = req.body.title || bug.title;
+    bug.status = req.body.status || bug.status;
+    res.<span class="function">json</span>(bug);
+});
+
+<span class="comment">// DELETE /api/bugs/:id — delete a bug</span>
+app.<span class="function">delete</span>(<span class="string">"/api/bugs/:id"</span>, (req, res) => {
+    bugs = bugs.<span class="function">filter</span>((b) => b.id !== <span class="function">Number</span>(req.params.id));
+    res.<span class="function">status</span>(<span class="number">204</span>).<span class="function">send</span>(); <span class="comment">// 204 = No content (successfully deleted)</span>
+});
+
+app.<span class="function">listen</span>(<span class="number">5000</span>, () => <span class="function">console</span>.<span class="function">log</span>(<span class="string">"API running on :5000"</span>));</code></pre>
+
+  <h4>Test your API</h4>
+  <p>Run the server, then in terminal open a <strong>second terminal</strong> and run:</p>
+  <pre><code>curl http://localhost:5000/api/bugs</code></pre>
+  <p>Or just visit <code>http://localhost:5000/api/bugs</code> in your browser.</p>
+
+  <h4>Your Task</h4>
+  <ol>
+    <li>Add a <code>priority</code> field (low/medium/high/critical) to the POST route</li>
+    <li>Add route <code>GET /api/bugs/open</code> that returns only open bugs</li>
+    <li>Test with curl or browser</li>
+  </ol>
+
+  <div class="warning"><strong>Don't understand routes?</strong> Think of URLs like file paths. <code>GET /api/bugs</code> = "give me all bugs". <code>POST /api/bugs</code> = "create a new bug". <code>:id</code> = a variable.</div>
+</div>
+
+<!-- Day 5 -->
+<div class="card">
+  <h3><span class="badge mongo">Day 5</span> MongoDB + Mongoose</h3>
+  <div class="outcome">Store data in a real database. Connect Express to MongoDB.</div>
+
+  <h4>Step 1: Install MongoDB</h4>
+  <p>Go to <code>https://www.mongodb.com/try/download/community</code> — download and install MongoDB Community Edition.</p>
+  <p>Or use <strong>MongoDB Atlas</strong> (cloud, no install):</p>
+  <ol>
+    <li>Go to <code>https://www.mongodb.com/atlas</code> → Sign up (free)</li>
+    <li>Create a cluster (free M0 tier)</li>
+    <li>Click "Connect" → "Connect your application" → copy the connection string</li>
+  </ol>
+
+  <h4>Step 2: Install Mongoose</h4>
+  <pre><code>npm install mongoose</code></pre>
+
+  <h4>Step 3: Connect and create a model</h4>
+  <p>Create <code>models/Bug.js</code>:</p>
+  <pre><code><span class="keyword">const</span> mongoose = <span class="function">require</span>(<span class="string">"mongoose"</span>);
+
+<span class="comment">// Schema = structure definition (like a Java class with fields)</span>
+<span class="keyword">const</span> bugSchema = <span class="keyword">new</span> mongoose.<span class="function">Schema</span>({
+    title: { type: String, required: <span class="keyword">true</span> },          <span class="comment">// required = NOT NULL</span>
+    description: { type: String, default: <span class="string">""</span> },        <span class="comment">// default value</span>
+    priority: { type: String, enum: [<span class="string">"low"</span>, <span class="string">"medium"</span>, <span class="string">"high"</span>, <span class="string">"critical"</span>], default: <span class="string">"medium"</span> },
+    status: { type: String, enum: [<span class="string">"open"</span>, <span class="string">"in-progress"</span>, <span class="string">"resolved"</span>, <span class="string">"closed"</span>], default: <span class="string">"open"</span> },
+    createdAt: { type: Date, default: Date.<span class="function">now</span> }
+});
+
+<span class="comment">// Model = the actual thing you query</span>
+<span class="keyword">module</span>.<span class="keyword">exports</span> = mongoose.<span class="function">model</span>(<span class="string">"Bug"</span>, bugSchema);</code></pre>
+
+  <p>Create <code>server.js</code> with MongoDB:</p>
+  <pre><code><span class="keyword">const</span> express = <span class="function">require</span>(<span class="string">"express"</span>);
+<span class="keyword">const</span> mongoose = <span class="function">require</span>(<span class="string">"mongoose"</span>);
+<span class="keyword">const</span> Bug = <span class="function">require</span>(<span class="string">"./models/Bug"</span>);
+<span class="keyword">const</span> app = <span class="function">express</span>();
+
+app.<span class="function">use</span>(express.<span class="function">json</span>());
+
+<span class="comment">// Connect to MongoDB</span>
+<span class="comment">// Replace with YOUR connection string from Atlas (or use local)</span>
+mongoose.<span class="function">connect</span>(<span class="string">"mongodb://127.0.0.1:27017/bugtracker"</span>)
+    .<span class="function">then</span>(() => <span class="function">console</span>.<span class="function">log</span>(<span class="string">"MongoDB connected"</span>))
+    .<span class="function">catch</span>(err => <span class="function">console</span>.<span class="function">log</span>(err));
+
+<span class="comment">// CREATE a bug (using Mongoose)</span>
+app.<span class="function">post</span>(<span class="string">"/api/bugs"</span>, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">try</span> {
+        <span class="keyword">const</span> bug = <span class="keyword">await</span> Bug.<span class="function">create</span>(req.body); <span class="comment">// creates AND saves to DB</span>
+        res.<span class="function">status</span>(<span class="number">201</span>).<span class="function">json</span>(bug);
+    } <span class="keyword">catch</span> (err) {
+        res.<span class="function">status</span>(<span class="number">400</span>).<span class="function">json</span>({ error: err.message });
+    }
+});
+
+<span class="comment">// READ all bugs</span>
+app.<span class="function">get</span>(<span class="string">"/api/bugs"</span>, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> bugs = <span class="keyword">await</span> Bug.<span class="function">find</span>(); <span class="comment">// SELECT * FROM bugs</span>
+    res.<span class="function">json</span>(bugs);
+});
+
+<span class="comment">// READ one bug</span>
+app.<span class="function">get</span>(<span class="string">"/api/bugs/:id"</span>, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> bug = <span class="keyword">await</span> Bug.<span class="function">findById</span>(req.params.id);
+    <span class="keyword">if</span> (!bug) <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">404</span>).<span class="function">json</span>({ error: <span class="string">"Not found"</span> });
+    res.<span class="function">json</span>(bug);
+});
+
+<span class="comment">// UPDATE a bug</span>
+app.<span class="function">put</span>(<span class="string">"/api/bugs/:id"</span>, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> bug = <span class="keyword">await</span> Bug.<span class="function">findByIdAndUpdate</span>(req.params.id, req.body, { new: <span class="keyword">true</span> });
+    <span class="keyword">if</span> (!bug) <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">404</span>).<span class="function">json</span>({ error: <span class="string">"Not found"</span> });
+    res.<span class="function">json</span>(bug);
+});
+
+<span class="comment">// DELETE a bug</span>
+app.<span class="function">delete</span>(<span class="string">"/api/bugs/:id"</span>, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> bug = <span class="keyword">await</span> Bug.<span class="function">findByIdAndDelete</span>(req.params.id);
+    <span class="keyword">if</span> (!bug) <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">404</span>).<span class="function">json</span>({ error: <span class="string">"Not found"</span> });
+    res.<span class="function">status</span>(<span class="number">204</span>).<span class="function">send</span>();
+});
+
+app.<span class="function">listen</span>(<span class="number">5000</span>, () => <span class="function">console</span>.<span class="function">log</span>(<span class="string">"API with DB running"</span>));</code></pre>
+
+  <div class="tip"><strong>async/await explained:</strong> <code>await</code> says "wait for this database operation to finish before moving on". <code>async</code> marks the function as using await. In Java, you'd use <code>CompletableFuture</code> — same idea.</div>
+
+  <h4>Your Task</h4>
+  <ol>
+    <li>Add a <code>Bug.find({ status: "open" })</code> route</li>
+    <li>Add a <code>priority</code> field to the schema</li>
+    <li>Create a bug via POST, verify it appears in GET</li>
+  </ol>
+</div>
+
+<!-- ==================== PHASE 2 ==================== -->
+<h2 id="week2" style="margin-top:50px;">Phase 2: Backend (Days 6-14)</h2>
+
+<div class="card week">
+  <h3>Week 2 Overview — 28 Backend Concepts</h3>
+  <p>Days 6-14 build the complete backend for our Bug Tracker. Every feature is a real-world concept you'd use at work.</p>
+
+  <div class="concept-grid">
+    <div class="concept-item"><span class="num">1</span> MVC pattern</div>
+    <div class="concept-item"><span class="num">2</span> JWT auth + refresh tokens</div>
+    <div class="concept-item"><span class="num">3</span> Role-based access (admin/member)</div>
+    <div class="concept-item"><span class="num">4</span> CRUD + MongoDB refs</div>
+    <div class="concept-item"><span class="num">5</span> express-validator</div>
+    <div class="concept-item"><span class="num">6</span> File upload (multer + sharp)</div>
+    <div class="concept-item"><span class="num">7</span> Aggregation pipeline (stats)</div>
+    <div class="concept-item"><span class="num">8</span> Pagination + sorting + filtering</div>
+    <div class="concept-item"><span class="num">9</span> Soft delete</div>
+    <div class="concept-item"><span class="num">10</span> Audit log</div>
+    <div class="concept-item"><span class="num">11</span> Error handling (centralized)</div>
+    <div class="concept-item"><span class="num">12</span> Rate limiting</div>
+    <div class="concept-item"><span class="num">13</span> Security headers (helmet/cors/xss)</div>
+    <div class="concept-item"><span class="num">14</span> Password reset + email verification</div>
+    <div class="concept-item"><span class="num">15</span> WebSockets (Socket.io)</div>
+    <div class="concept-item"><span class="num">16</span> Redis caching</div>
+    <div class="concept-item"><span class="num">17</span> Background jobs (Bull + Redis)</div>
+    <div class="concept-item"><span class="num">18</span> Database indexing</div>
+    <div class="concept-item"><span class="num">19</span> Swagger API docs</div>
+    <div class="concept-item"><span class="num">20</span> Webhooks</div>
+    <div class="concept-item"><span class="num">21</span> Refresh token rotation</div>
+    <div class="concept-item"><span class="num">22</span> Jest + Supertest testing</div>
+    <div class="concept-item"><span class="num">23</span> CI/CD (GitHub Actions)</div>
+    <div class="concept-item"><span class="num">24</span> Docker + Docker Compose</div>
+    <div class="concept-item"><span class="num">25</span> Environmental configs</div>
+    <div class="concept-item"><span class="num">26</span> Morgan + Winston logging</div>
+    <div class="concept-item"><span class="num">27</span> Nodemailer (email)</div>
+    <div class="concept-item"><span class="num">28</span> API versioning</div>
+  </div>
+</div>
+
+<!-- Days 6-14 condensed -->
+<div class="card">
+  <h3>Days 6-14: Backend Build (Quick Reference)</h3>
+  <p style="color:#94a3b8;">Each day builds on the previous. Do them in order.</p>
+
+  <table>
+    <tr><th>Day</th><th>Concept</th><th>What you'll do</th><th>Files you'll create</th></tr>
+    <tr>
+      <td><strong>6</strong></td>
+      <td>MVC pattern</td>
+      <td>Restructure into models/ controllers/ routes/ — separate files, not everything in server.js</td>
+      <td><code>controllers/bugController.js</code>, <code>routes/bugRoutes.js</code></td>
+    </tr>
+    <tr>
+      <td><strong>7</strong></td>
+      <td>Auth (JWT)</td>
+      <td>Create User model (name, email, password hashed with bcryptjs). Register + login routes return JWT token</td>
+      <td><code>models/User.js</code>, <code>controllers/authController.js</code>, <code>routes/authRoutes.js</code></td>
+    </tr>
+    <tr>
+      <td><strong>8</strong></td>
+      <td>Auth middleware + RBAC</td>
+      <td><code>middleware/auth.js</code> — verifies JWT. <code>middleware/rbac.js</code> — checks role (admin/member). Protect bug routes</td>
+      <td><code>middleware/auth.js</code>, <code>middleware/rbac.js</code></td>
+    </tr>
+    <tr>
+      <td><strong>9</strong></td>
+      <td>Project model + CRUD</td>
+      <td>Project model (name, description, owner, members[]). Nested routes: <code>/api/projects/:id/bugs</code></td>
+      <td><code>models/Project.js</code>, <code>controllers/projectController.js</code></td>
+    </tr>
+    <tr>
+      <td><strong>10</strong></td>
+      <td>Validation + Error handling</td>
+      <td><code>express-validator</code> in middleware. Central <code>AppError</code> class. Global error handler catches all errors</td>
+      <td><code>utils/AppError.js</code>, <code>middleware/errorHandler.js</code>, <code>middleware/validate.js</code></td>
+    </tr>
+    <tr>
+      <td><strong>11</strong></td>
+      <td>File upload + image processing</td>
+      <td><code>multer</code> for uploads. <code>sharp</code> to resize images. Store in <code>uploads/</code>. Reference path in Bug model</td>
+      <td><code>middleware/upload.js</code>, <code>controllers/uploadController.js</code></td>
+    </tr>
+    <tr>
+      <td><strong>12</strong></td>
+      <td>Aggregation + Pagination</td>
+      <td><code>GET /api/bugs/stats</code> — MongoDB aggregate pipeline ($group, $lookup). Pagination with <code>?page&limit</code></td>
+      <td>Update <code>controllers/bugController.js</code></td>
+    </tr>
+    <tr>
+      <td><strong>13</strong></td>
+      <td>Comments + nested routes</td>
+      <td>Comment model (text, bug ref, author ref). <code>GET/POST /api/bugs/:bugId/comments</code>. Each comment shows author name</td>
+      <td><code>models/Comment.js</code>, <code>controllers/commentController.js</code></td>
+    </tr>
+    <tr>
+      <td><strong>14</strong></td>
+      <td>Soft delete + Audit log</td>
+      <td><code>deletedAt</code> on Bug/Project. AuditLog records who changed what. Admin routes: <code>GET /api/admin/users</code></td>
+      <td><code>models/AuditLog.js</code>, <code>controllers/adminController.js</code></td>
+    </tr>
+  </table>
+
+  <div class="tip"><strong>Stuck?</strong> Every route follows the same pattern: model → controller function → route → test with curl/Postman. If one bugs you, delete it and rewrite — that's how you learn.</div>
+</div>
+
+<!-- Day 7 detailed (auth — most complex) -->
+<div class="card">
+  <h3><span class="badge node">Day 7 Detail</span> Auth: Register &amp; Login (JWT)</h3>
+  <p>This is the hardest part of any backend. Take it slow.</p>
+
+  <h4>Step 1: Install packages</h4>
+  <pre><code>npm install bcryptjs jsonwebtoken</code></pre>
+
+  <h4>Step 2: User model</h4>
+  <pre><code><span class="keyword">const</span> mongoose = <span class="function">require</span>(<span class="string">"mongoose"</span>);
+<span class="keyword">const</span> bcrypt = <span class="function">require</span>(<span class="string">"bcryptjs"</span>);
+
+<span class="keyword">const</span> userSchema = <span class="keyword">new</span> mongoose.<span class="function">Schema</span>({
+    name: { type: String, required: [<span class="keyword">true</span>, <span class="string">"Name is required"</span>] },
+    email: { type: String, required: <span class="keyword">true</span>, unique: <span class="keyword">true</span>, lowercase: <span class="keyword">true</span> },
+    password: { type: String, required: <span class="keyword">true</span>, minlength: <span class="number">6</span>, select: <span class="keyword">false</span> },
+    role: { type: String, enum: [<span class="string">"admin"</span>, <span class="string">"member"</span>], default: <span class="string">"member"</span> }
+}, { timestamps: <span class="keyword">true</span> }); <span class="comment">// automatically adds createdAt, updatedAt</span>
+
+<span class="comment">// Hash password BEFORE saving (like a Java @PrePersist)</span>
+userSchema.<span class="function">pre</span>(<span class="string">"save"</span>, <span class="keyword">async</span> <span class="keyword">function</span> (next) {
+    <span class="keyword">if</span> (!<span class="keyword">this</span>.isModified(<span class="string">"password"</span>)) <span class="keyword">return</span> <span class="function">next</span>();
+    <span class="keyword">this</span>.password = <span class="keyword">await</span> bcrypt.<span class="function">hash</span>(<span class="keyword">this</span>.password, <span class="number">12</span>); <span class="comment">// 12 = salt rounds</span>
+    <span class="function">next</span>();
+});
+
+<span class="comment">// Method to compare passwords (like Java .equals)</span>
+userSchema.methods.<span class="function">comparePassword</span> = <span class="keyword">async</span> <span class="keyword">function</span> (candidatePassword) {
+    <span class="keyword">return</span> <span class="keyword">await</span> bcrypt.<span class="function">compare</span>(candidatePassword, <span class="keyword">this</span>.password);
+};
+
+<span class="keyword">module</span>.<span class="keyword">exports</span> = mongoose.<span class="function">model</span>(<span class="string">"User"</span>, userSchema);</code></pre>
+
+  <h4>Step 3: Auth controller</h4>
+  <pre><code><span class="keyword">const</span> User = <span class="function">require</span>(<span class="string">"../models/User"</span>);
+<span class="keyword">const</span> jwt = <span class="function">require</span>(<span class="string">"jsonwebtoken"</span>);
+
+<span class="comment">// Helper: generate JWT token</span>
+<span class="keyword">const</span> <span class="function">signToken</span> = (userId) => {
+    <span class="keyword">return</span> jwt.<span class="function">sign</span>({ id: userId }, process.env.JWT_SECRET, { expiresIn: <span class="string">"15m"</span> });
+};
+
+<span class="keyword">exports</span>.<span class="function">register</span> = <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> { name, email, password } = req.body;
+    <span class="keyword">const</span> user = <span class="keyword">await</span> User.<span class="function">create</span>({ name, email, password });
+    <span class="keyword">const</span> token = <span class="function">signToken</span>(user._id);
+    res.<span class="function">status</span>(<span class="number">201</span>).<span class="function">json</span>({ token, user: { id: user._id, name, email, role: user.role } });
+};
+
+<span class="keyword">exports</span>.<span class="function">login</span> = <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> { email, password } = req.body;
+    <span class="keyword">const</span> user = <span class="keyword">await</span> User.<span class="function">findOne</span>({ email }).<span class="function">select</span>(<span class="string">"+password"</span>); <span class="comment">// include password (excluded by default)</span>
+    <span class="keyword">if</span> (!user || !(<span class="keyword">await</span> user.<span class="function">comparePassword</span>(password))) {
+        <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">401</span>).<span class="function">json</span>({ error: <span class="string">"Invalid email or password"</span> });
+    }
+    <span class="keyword">const</span> token = <span class="function">signToken</span>(user._id);
+    res.<span class="function">json</span>({ token, user: { id: user._id, name: user.name, email, role: user.role } });
+};</code></pre>
+
+  <h4>Step 4: Auth middleware</h4>
+  <pre><code><span class="keyword">const</span> jwt = <span class="function">require</span>(<span class="string">"jsonwebtoken"</span>);
+<span class="keyword">const</span> User = <span class="function">require</span>(<span class="string">"../models/User"</span>);
+
+<span class="keyword">module</span>.<span class="keyword">exports</span> = <span class="keyword">async</span> (req, res, next) => {
+    <span class="keyword">try</span> {
+        <span class="keyword">const</span> token = req.headers.authorization?.<span class="function">replace</span>(<span class="string">"Bearer "</span>, <span class="string">""</span>);
+        <span class="keyword">if</span> (!token) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">"No token provided"</span>);
+
+        <span class="keyword">const</span> decoded = jwt.<span class="function">verify</span>(token, process.env.JWT_SECRET);
+        req.user = <span class="keyword">await</span> User.<span class="function">findById</span>(decoded.id);
+        <span class="keyword">if</span> (!req.user) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">"User not found"</span>);
+        <span class="function">next</span>();
+    } <span class="keyword">catch</span> (err) {
+        res.<span class="function">status</span>(<span class="number">401</span>).<span class="function">json</span>({ error: <span class="string">"Authentication required"</span> });
+    }
+};</code></pre>
+
+  <div class="tip"><strong>How JWT works:</strong> User logs in → server creates a signed token (like a digital passport) → client stores it → sends it with every request in the <code>Authorization: Bearer &lt;token&gt;</code> header → server verifies it → if valid, processes request.</div>
+</div>
+
+<!-- ==================== PHASE 3 ==================== -->
+<h2 id="week3" style="margin-top:50px;">Phase 3: Frontend (Days 15-24)</h2>
+
+<div class="card">
+  <h3>Days 15-24: Vue 3 Frontend</h3>
+  <p>Build the user interface that talks to your API.</p>
+
+  <table>
+    <tr><th>Day</th><th>Concept</th><th>What you'll do</th></tr>
+    <tr><td><strong>15</strong></td><td>Vite + Vue setup</td><td><code>npm create vite@latest frontend -- --template vue</code>. Install: <code>vue-router pinia axios</code>. Folder structure</td></tr>
+    <tr><td><strong>16</strong></td><td>Vue Router</td><td>Create routes: <code>/</code>, <code>/login</code>, <code>/register</code>, <code>/dashboard</code>, <code>/projects/:id</code>, <code>/bugs/:id</code>, <code>/admin</code>. Navigation guard (redirect to /login if no token)</td></tr>
+    <tr><td><strong>17</strong></td><td>Pinia auth store</td><td><code>stores/authStore.js</code> — login(), register(), logout(), token in localStorage, API interceptor</td></tr>
+    <tr><td><strong>18</strong></td><td>Login + Register views</td><td>Form with v-model, submit handler calls authStore, error display, redirect to dashboard</td></tr>
+    <tr><td><strong>19</strong></td><td>Navbar + Sidebar</td><td>Show/hide based on auth. Show username, role. Links: Dashboard, Projects, Admin (if admin)</td></tr>
+    <tr><td><strong>20</strong></td><td>Dashboard view</td><td>Fetch stats from <code>GET /api/bugs/stats</code>, display cards (total by status, priority). Chart.js charts</td></tr>
+    <tr><td><strong>21</strong></td><td>Project detail + Bug list</td><td>Show project info, bug list with filter bar (status dropdown, search input, priority filter), pagination</td></tr>
+    <tr><td><strong>22</strong></td><td>Bug form (create/edit)</td><td>Reusable form component: title, description, priority, assignee, screenshot upload</td></tr>
+    <tr><td><strong>23</strong></td><td>Bug detail + Comments</td><td>Full bug info, status dropdown, comment section (fetch + post comments), image display</td></tr>
+    <tr><td><strong>24</strong></td><td>Admin view + Polish</td><td>User table, role change. Loading spinners, 404 page, toast notifications</td></tr>
+  </table>
+</div>
+
+<!-- Day 15 detailed -->
+<div class="card">
+  <h3><span class="badge vue">Day 15 Detail</span> Vue 3 Project Setup</h3>
+
+  <h4>Step 1: Create Vue project</h4>
+  <p>In terminal (inside <code>bug-tracker/</code> folder):</p>
+  <pre><code>npm create vite@latest frontend -- --template vue
+cd frontend
+npm install
+npm install vue-router@4 pinia axios</code></pre>
+
+  <h4>Step 2: Folder structure</h4>
+  <p>Inside <code>frontend/src/</code>, create folders:</p>
+  <pre><code>mkdir src\views
+mkdir src\components
+mkdir src\stores
+mkdir src\router
+mkdir src\utils</code></pre>
+
+  <h4>Step 3: Vue 3 component (your first one)</h4>
+  <p>Create <code>frontend/src/views/Home.vue</code>:</p>
+  <pre><code><span class="tag">&lt;template&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"home"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Welcome to Bug Tracker<span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span>Track and manage your project bugs efficiently.<span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;router-link</span> <span class="attr">to</span>=<span class="value">"/login"</span><span class="tag">&gt;</span>Login<span class="tag">&lt;/router-link&gt;</span> |
+    <span class="tag">&lt;router-link</span> <span class="attr">to</span>=<span class="value">"/register"</span><span class="tag">&gt;</span>Register<span class="tag">&lt;/router-link&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/template&gt;</span>
+
+<span class="tag">&lt;script</span> <span class="attr">setup</span><span class="tag">&gt;</span>
+<span class="comment">// Vue 3 Composition API — logic goes here</span>
+<span class="tag">&lt;/script&gt;</span>
+
+<span class="tag">&lt;style</span> <span class="attr">scoped</span><span class="tag">&gt;</span>
+<span class="keyword">.home</span> { <span class="attribute">text-align</span>: <span class="string">center</span>; <span class="attribute">padding</span>: <span class="number">50px</span>; }
+<span class="tag">&lt;/style&gt;</span></code></pre>
+
+  <h4>Step 4: Router setup</h4>
+  <p>Create <code>frontend/src/router/index.js</code>:</p>
+  <pre><code><span class="keyword">import</span> { createRouter, createWebHistory } <span class="keyword">from</span> <span class="string">"vue-router"</span>
+<span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">"../views/Home.vue"</span>
+
+<span class="keyword">const</span> routes = [
+    { path: <span class="string">"/"</span>, component: Home },
+    { path: <span class="string">"/login"</span>, component: () => <span class="function">import</span>(<span class="string">"../views/Login.vue"</span>) }, <span class="comment">// lazy load</span>
+    { path: <span class="string">"/register"</span>, component: () => <span class="function">import</span>(<span class="string">"../views/Register.vue"</span>) },
+    { path: <span class="string">"/dashboard"</span>, component: () => <span class="function">import</span>(<span class="string">"../views/Dashboard.vue"</span>), meta: { requiresAuth: <span class="keyword">true</span> } },
+]
+
+<span class="keyword">const</span> router = <span class="function">createRouter</span>({
+    history: <span class="function">createWebHistory</span>(),
+    routes,
+})
+
+<span class="comment">// Navigation guard — redirect to /login if not authenticated</span>
+router.<span class="function">beforeEach</span>((to, <span class="keyword">from</span>, next) => {
+    <span class="keyword">const</span> token = localStorage.<span class="function">getItem</span>(<span class="string">"token"</span>)
+    <span class="keyword">if</span> (to.meta.requiresAuth &amp;&amp; !token) next(<span class="string">"/login"</span>)
+    <span class="keyword">else</span> <span class="function">next</span>()
+})
+
+<span class="keyword">export</span> <span class="keyword">default</span> router</code></pre>
+
+  <h4>Step 5: Update main.js</h4>
+  <p>Modify <code>frontend/src/main.js</code>:</p>
+  <pre><code><span class="keyword">import</span> { createApp } <span class="keyword">from</span> <span class="string">"vue"</span>
+<span class="keyword">import</span> { createPinia } <span class="keyword">from</span> <span class="string">"pinia"</span>
+<span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">"./App.vue"</span>
+<span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">"./router"</span>
+
+<span class="keyword">const</span> app = <span class="function">createApp</span>(App)
+app.<span class="function">use</span>(<span class="function">createPinia</span>())
+app.<span class="function">use</span>(router)
+app.<span class="function">mount</span>(<span class="string">"#app"</span>)</code></pre>
+
+  <h4>Step 6: Run the frontend</h4>
+  <pre><code>npm run dev</code></pre>
+  <p>Open <code>http://localhost:5173/</code> — you should see "Welcome to Bug Tracker".</p>
+
+  <div class="tip"><strong>&lt;script setup&gt;</strong> is Vue 3's modern syntax. It's like the <code>&lt;script&gt;</code> tag but variables and functions are automatically available in the template — no need for <code>export default {}</code>.</div>
+</div>
+
+<!-- ==================== PHASE 4 ==================== -->
+<h2 id="week4" style="margin-top:50px;">Phase 4: Real-Time + Performance + Deploy (Days 25-30)</h2>
+
+<div class="card">
+  <h3>Days 25-30: Advanced Features &amp; Production</h3>
+
+  <table>
+    <tr><th>Day</th><th>Concept</th><th>Packages to install</th><th>What you'll do</th></tr>
+    <tr><td><strong>25</strong></td><td>WebSockets (Socket.io)</td><td><code>npm install socket.io</code> (server), <code>npm install socket.io-client</code> (frontend)</td><td>Real-time: when a bug is created/updated, all connected users see it instantly. New comment appears without refresh</td></tr>
+    <tr><td><strong>26</strong></td><td>Redis caching</td><td><code>npm install ioredis</code></td><td>Cache <code>GET /api/projects</code> for 5min. Invalidate when project is created/updated. Faster responses</td></tr>
+    <tr><td><strong>27</strong></td><td>Background jobs</td><td><code>npm install bull</code></td><td>Email queue: when a bug is assigned, push job → worker sends email via Nodemailer. Doesn't block the API response</td></tr>
+    <tr><td><strong>28</strong></td><td>Testing (Jest + Supertest)</td><td><code>npm install --save-dev jest supertest mongodb-memory-server</code></td><td>Write tests: register → login → create bug → get bugs → update → delete. Tests run against in-memory MongoDB, no real DB needed</td></tr>
+    <tr><td><strong>29</strong></td><td>CI/CD + Swagger + Docker</td><td><code>npm install swagger-jsdoc swagger-ui-express</code></td><td>Swagger at <code>/api-docs</code>. GitHub Actions: run tests on push. Dockerfile + docker-compose.yml</td></tr>
+    <tr><td><strong>30</strong></td><td>Deploy + Final review</td><td>Railway/Render account</td><td>Deploy backend + MongoDB Atlas. Deploy frontend (serve from Express or Vercel). Test everything end-to-end</td></tr>
+  </table>
+</div>
+
+<!-- Day 25 detailed -->
+<div class="card">
+  <h3><span class="badge node">Day 25 Detail</span> WebSockets with Socket.io</h3>
+
+  <h4>Backend: Add Socket.io</h4>
+  <p>In <code>server.js</code>, add:</p>
+  <pre><code><span class="keyword">const</span> http = <span class="function">require</span>(<span class="string">"http"</span>);
+<span class="keyword">const</span> { Server } = <span class="function">require</span>(<span class="string">"socket.io"</span>);
+
+<span class="keyword">const</span> server = http.<span class="function">createServer</span>(app); <span class="comment">// wrap Express in HTTP server</span>
+<span class="keyword">const</span> io = <span class="keyword">new</span> <span class="function">Server</span>(server, { cors: { origin: <span class="string">"*"</span> } });
+
+<span class="comment">// When a client connects</span>
+io.<span class="function">on</span>(<span class="string">"connection"</span>, (socket) => {
+    <span class="function">console</span>.<span class="function">log</span>(<span class="string">"Client connected:"</span>, socket.id);
+
+    socket.<span class="function">on</span>(<span class="string">"join-project"</span>, (projectId) => {
+        socket.<span class="function">join</span>(<span class="string">`project:${projectId}`</span>); <span class="comment">// join a room</span>
+    });
+});
+
+<span class="comment">// Emit events when bugs change (in your controller)</span>
+<span class="comment">// io.to(`project:${projectId}`).emit("bug:created", newBug);</span>
+<span class="comment">// io.to(`project:${projectId}`).emit("bug:updated", updatedBug);</span>
+
+<span class="comment">// Use server.listen instead of app.listen</span>
+server.<span class="function">listen</span>(PORT, () => <span class="function">console</span>.<span class="function">log</span>(<span class="string">"Server with WebSocket running"</span>));</code></pre>
+
+  <h4>Frontend: Connect</h4>
+  <pre><code><span class="keyword">import</span> { io } <span class="keyword">from</span> <span class="string">"socket.io-client"</span>
+
+<span class="keyword">const</span> socket = <span class="function">io</span>(<span class="string">"http://localhost:5000"</span>)
+
+<span class="comment">// Join project room when viewing a project</span>
+socket.<span class="function">emit</span>(<span class="string">"join-project"</span>, projectId)
+
+<span class="comment">// Listen for real-time updates</span>
+socket.<span class="function">on</span>(<span class="string">"bug:created"</span>, (bug) => {
+    bugs.value.<span class="function">unshift</span>(bug) <span class="comment">// add to top of list</span>
+})
+
+socket.<span class="function">on</span>(<span class="string">"bug:updated"</span>, (bug) => {
+    <span class="keyword">const</span> idx = bugs.value.<span class="function">findIndex</span>(b => b._id === bug._id)
+    <span class="keyword">if</span> (idx !== -<span class="number">1</span>) bugs.value[idx] = bug
+})</code></pre>
+
+  <div class="tip"><strong>What does this do?</strong> Without WebSocket, you have to refresh the page to see new bugs. With WebSocket, when anyone creates a bug, it appears instantly on everyone's screen — like Google Docs real-time editing.</div>
+</div>
+
+<!-- ==================== SUMMARY ==================== -->
+<h2 style="margin-top:50px;">What You'll Have Built</h2>
+
+<div class="card" style="border-left-color:#34d399;">
+  <div class="concept-grid">
+    <div class="concept-item">✅ JavaScript (ES6+)</div>
+    <div class="concept-item">✅ Node.js + npm</div>
+    <div class="concept-item">✅ Express server + REST API</div>
+    <div class="concept-item">✅ MongoDB + Mongoose ODM</div>
+    <div class="concept-item">✅ MVC architecture</div>
+    <div class="concept-item">✅ JWT auth + refresh tokens</div>
+    <div class="concept-item">✅ Role-based access (RBAC)</div>
+    <div class="concept-item">✅ CRUD with relations</div>
+    <div class="concept-item">✅ Input validation</div>
+    <div class="concept-item">✅ File upload + image processing</div>
+    <div class="concept-item">✅ Aggregation pipeline</div>
+    <div class="concept-item">✅ Pagination + filtering + search</div>
+    <div class="concept-item">✅ Soft delete</div>
+    <div class="concept-item">✅ Audit logging</div>
+    <div class="concept-item">✅ Central error handling</div>
+    <div class="concept-item">✅ Rate limiting</div>
+    <div class="concept-item">✅ Security headers (helmet, CORS, XSS)</div>
+    <div class="concept-item">✅ Password reset + email</div>
+    <div class="concept-item">✅ WebSockets (real-time)</div>
+    <div class="concept-item">✅ Redis caching</div>
+    <div class="concept-item">✅ Background jobs (Bull)</div>
+    <div class="concept-item">✅ Database indexing</div>
+    <div class="concept-item">✅ Swagger API docs</div>
+    <div class="concept-item">✅ Webhooks</div>
+    <div class="concept-item">✅ Refresh token rotation</div>
+    <div class="concept-item">✅ Jest + Supertest testing</div>
+    <div class="concept-item">✅ CI/CD (GitHub Actions)</div>
+    <div class="concept-item">✅ Docker + Compose</div>
+    <div class="concept-item">✅ Vue 3 (Composition API)</div>
+    <div class="concept-item">✅ Vue Router + guards</div>
+    <div class="concept-item">✅ Pinia state management</div>
+    <div class="concept-item">✅ Axios + interceptors</div>
+    <div class="concept-item">✅ Charts (Chart.js)</div>
+    <div class="concept-item">✅ Full deployment</div>
+  </div>
+</div>
+
+<!-- ==================== TROUBLESHOOTING ==================== -->
+<h2>Troubleshooting (When You Get Stuck)</h2>
+
+<div class="card" style="border-left-color:#f97316;">
+  <table>
+    <tr><th>Error</th><th>Most Likely Cause</th><th>Fix</th></tr>
+    <tr><td><code>Cannot find module 'express'</code></td><td>You forgot to <code>npm install express</code></td><td>Run <code>npm install express</code> in the folder where <code>package.json</code> is</td></tr>
+    <tr><td><code>ECONNREFUSED ::1:27017</code></td><td>MongoDB isn't running</td><td>Start MongoDB: <code>mongod</code> or check Services panel. Or use Atlas</td></tr>
+    <tr><td><code>401 Unauthorized</code></td><td>Missing/invalid token</td><td>Check <code>Authorization: Bearer &lt;token&gt;</code> header is set. Token might be expired</td></tr>
+    <tr><td><code>404 Not Found</code></td><td>Wrong URL</td><td>Check your route path. <code>/api/bugs</code> vs <code>/api/bugs/</code> matters</td></tr>
+    <tr><td><code>ValidationError</code></td><td>Missing required field</td><td>Check your schema. <code>title</code> is required? Send it in the request body</td></tr>
+    <tr><td><code>CORS error</code> (browser)</td><td>Frontend port different from backend</td><td>Add <code>npm install cors</code> then <code>app.use(cors())</code> in server.js</td></tr>
+    <tr><td><code>npm run dev</code> not found</td><td>You're in the wrong folder</td><td><code>cd frontend</code> first. Vue commands run from the <code>frontend/</code> folder</td></tr>
+  </table>
+
+  <div class="tip"><strong>General debugging:</strong> Add <code>console.log()</code> everywhere. Check what data is coming in/out. The terminal shows errors — read them carefully, they tell you exactly what's wrong and where.</div>
+</div>
+
+<h2>How To Use This Page</h2>
+<div class="card">
+  <ol>
+    <li><strong>Do one day per day.</strong> Don't skip ahead — each day builds on the previous</li>
+    <li><strong>Type the code yourself.</strong> Don't copy-paste. Typing builds muscle memory</li>
+    <li><strong>If you're stuck for &gt;30min:</strong> Skip to the next day. Or re-read the current day's code from scratch</li>
+    <li><strong>Test after every step.</strong> After adding a route, test it. After adding a component, view it</li>
+    <li><strong>Break things on purpose.</strong> Change a variable name, see what error you get, then fix it. This is how you learn</li>
+    <li><strong>Use AI for explanations.</strong> If a concept doesn't click, ask a coding AI: "Explain [concept] like I'm 12"</li>
+    <li><strong>Save your work.</strong> After each day, commit to git: <code>git add . && git commit -m "Day X"</code></li>
+  </ol>
+</div>
+
+<div class="footer">
+  Built for one person who wants to go from zero to full-stack in 30 days.<br>
+  You've got this. 🚀
+</div>
+
+</div><!-- end container -->
+
+</body>
+</html>
